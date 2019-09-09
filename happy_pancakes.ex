@@ -3,21 +3,22 @@ defmodule HappyPancakes do
   Happy pancakes flipping calculator.
   """
 
+  # The number of flips and the state of the last pancake looked at.
   @initial_state {0, nil}
 
+  # The unhappy state of a particular pancake is represented by a minus.
   @unhappy_state "-"
 
   @doc """
-  # Set count = 0
-  # Take one pancake, set state
-  # Take another pancake. If different from previous state, count += 1, set state to new pancake
-  # If no more pancakes, and state is "-", count += 1.
+  Count the number of flips it takes to get a stack of pancakes in a consistently happy state (happy
+  face chocolate chips on top). When flipping a particular pancake, all pancakes above it must also
+  be flipped. The pancake stacks are represented by strings of pluses and minuses.
   """
-  def solution(_, test_cases) do
-    test_cases
+  def solution(_, stacks) do
+    stacks
     |> Stream.with_index()
-    |> Enum.each(fn {test_case, index} ->
-      test_case
+    |> Enum.each(fn {stack, index} ->
+      stack
       |> String.graphemes()
       |> count_flips()
       |> IO.inspect(label: "Case ##{index + 1}")
@@ -32,6 +33,7 @@ defmodule HappyPancakes do
     |> final_flip_count()
   end
 
+  # Implementation of a simplistic state machine while moving through the pancakes.
   defp next_pancake(new_state, {count, state} = acc) do
     acc
     |> put_elem(0, if(state != new_state, do: count + 1, else: count))

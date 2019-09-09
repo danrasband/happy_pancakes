@@ -14,26 +14,19 @@ The solution is located with the `happy_pancakes.ex` file, and is implemented in
 the `HappyPancakes.solution/2` function. Tests are written in the
 `happy_pancakes_test.exs` file. To run the tests, do the following:
 
-1. Make sure elixir is installed
+1. Make sure elixir is installed.
 2. In this folder, run `elixirc happy_pancakes.ex` to compile the
    `HappyPancakes` module.
 3. Run the tests with this command: `elixir happy_pancakes_test.exs`.
-
-## Process
-
-The process I used to come up with these solutions was to first come up with
-example sets, then examine them to understand the problem better. I then thought
-through several ways of looking at the problem, finally settling on a solution
-that was easy to implement, efficient, and correct.
 
 ## The Algorithm
 
 The algorithm I came up with for determining the number of flips required for
 a particular stack of pancakes, moving from top to bottom, to get all the
-pancakes into a happy state is as follows:
+pancakes into a happy state, is as follows:
 
-Given the set of possible pancake states S = {"-", "+"]}, and a particular
-ordered array of pancakes P, where P_0, P_1, P_2, ..., P_n ∈ S,
+Given the set of possible pancake states S = {"-", "+"}, and a particular
+ordered array of pancakes P, where P<sub>0</sub>, P<sub>1</sub>, P<sub>2</sub>, ..., P<sub>n</sub> ∈ S,
 
 1. Set count `c ← 0`.
 2. Set `i ← 0`.
